@@ -1,20 +1,4 @@
-export enum ShoeType {
-  Loafers,
-  Boots,
-  Sandals,
-  Sports,
-  Crocs,
-  Sneakers,
-}
-
-export interface Shoes {
-  shoeId: number,
-  shoeName: string,
-  brand: string,
-  cost: number,
-  shoeType: ShoeType,
-  madeIn: string,
-}
+import { Shoes, ShoeType } from "../types/Shoes";
 
 export const SHOES_ARRAY: Shoes[] = [
   { shoeId: 1, shoeName: "Classic Loafer", brand: "Allen Edmonds", cost: 180, shoeType: ShoeType.Loafers, madeIn: "USA" },
