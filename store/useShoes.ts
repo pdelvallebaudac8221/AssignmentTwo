@@ -26,7 +26,7 @@ const useShoes = create<ShoeState>((set, get) => ({
   },
 
   visitedShoes: [], // array to save visited shoes' IDs
-  visitedCount: () => get().visitedShoes.length, // a shorthand value for the total count of visited shoes
+  visitedCount: () => get().visitedShoes.length, // a shorthand value for the total count of visitedShoes
 
   // save a shoe to favorites, pushes only the ID of the shoe
   addFavorite: (id: number) => set((state: ShoeState) => ({
