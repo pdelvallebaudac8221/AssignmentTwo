@@ -1,0 +1,1 @@
+// Do not import react-native-gesture-handler on web
