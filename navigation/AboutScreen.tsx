@@ -2,6 +2,12 @@ import React from 'react';
 
 import {View, Text, StyleSheet} from 'react-native';
 
+/**
+ * AboutScreen Component
+ *
+ * Static informational screen that displays the app's mission statement
+ * and information about the company. Accessible from the drawer navigation.
+ */
 export default function AboutScreen() {
   return (
     <View style={styles.container}>

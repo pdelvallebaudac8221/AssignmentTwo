@@ -6,8 +6,20 @@ import ShoesListTab from '../screens/ShoesListTab';
 import FavoritesTab from '../screens/FavoritesTab';
 import ProfileTab from '../screens/ProfileTab';
 
+// Create the bottom tab navigator instance
 const Tab = createBottomTabNavigator();
 
+/**
+ * HomeTabs Component
+ *
+ * Bottom tab navigation that serves as the main interface of the app.
+ * Contains three tabs:
+ * - Shoes List: Browse all available shoes
+ * - Favorites: View favorited shoes
+ * - Profile: See user statistics (visited shoes count)
+ *
+ * Each tab has a custom icon from the Ionicons library.
+ */
 export default function HomeTabs() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>

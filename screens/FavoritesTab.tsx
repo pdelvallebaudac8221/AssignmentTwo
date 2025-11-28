@@ -4,17 +4,30 @@ import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
 import { useShoes } from '../store/useShoes';
 import { Shoes } from '../types/Shoes';
 
+/**
+ * FavoritesTab Component
+ *
+ * Displays a list of shoes that the user has marked as favorites.
+ * Shows an empty state message when no favorites are added.
+ * Allows users to remove shoes from their favorites list.
+ */
 export default function FavoritesTab() {
   const removeFavorite = useShoes(state => state.removeFavorite);
   const shoes = useShoes(state => state.shoes);
   const favoriteShoes = useShoes(state => state.favoriteShoes);
 
+  /**
+   * Filter the full shoes list to only include favorited items
+   * useMemo ensures this only has shoes and favoriteShoes as dependencies
+   */
   const favList = useMemo(
     () => shoes.filter(s => favoriteShoes.includes(s.shoeId)),
     [shoes, favoriteShoes]
   );
 
-
+  /**
+   * Renders a single favorite shoe card with remove button
+   */
   function renderItem({ item }: { item: Shoes }) {
     return (
       <View style={styles.card}>

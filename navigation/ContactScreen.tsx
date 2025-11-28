@@ -2,6 +2,12 @@ import React from 'react';
 
 import {View, Text, StyleSheet} from 'react-native';
 
+/**
+ * ContactScreen Component
+ *
+ * Shows email address and expected response times.
+ * Accessible from the drawer navigation.
+ */
 export default function ContactScreen() {
   return (
     <View style={styles.container}>

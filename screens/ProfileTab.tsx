@@ -3,7 +3,15 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import { useShoes } from '../store/useShoes';
 
+/**
+ * ProfileTab Component
+ *
+ * Displays user profile statistics.
+ * Currently shows the count of shoes that the user has viewed (visited).
+ * A shoe is marked as visited when the user opens its detail modal.
+ */
 export default function ProfileTab() {
+  // Get the total number of shoes the user has viewed
   const visitedCount = useShoes(state => state.visitedShoes.length);
 
   return (

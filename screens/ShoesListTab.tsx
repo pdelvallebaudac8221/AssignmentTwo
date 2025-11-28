@@ -13,21 +13,40 @@ import { SHOES_ARRAY } from '../data/Shoes';
 import { useShoes } from '../store/useShoes';
 import { Shoes } from '../types/Shoes';
 
+/**
+ * ShoesListTab Component
+ *
+ * Displays a scrollable list of all available shoes with the following features:
+ * - View basic shoe information (ID, name, brand) in a list
+ * - Tap on any shoe to see full details in a modal
+ * - Add/remove shoes to/from favorites
+ * - Automatically tracks visited shoes when viewing details
+ */
 export default function ShoesListTab() {
+  // Access favorite shoes list and related actions from global state
   const favoriteShoes = useShoes(state => state.favoriteShoes);
   const addFavorite = useShoes(state => state.addFavorite);
   const removeFavorite = useShoes(state => state.removeFavorite);
   const setShoeAsVisited = useShoes(state => state.setShoeAsVisited);
 
+  // Local state for managing the detail modal
   const [selectedShoe, setSelectedShoe] = useState<Shoes | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
 
+  /**
+   * Opens the detail modal for a specific shoe
+   * Also marks the shoe as visited in the global state
+   */
   function openModal(shoe: Shoes) {
     setSelectedShoe(shoe);
     setModalVisible(true);
     setShoeAsVisited(shoe.shoeId);
   }
 
+  /**
+   * Toggles a shoe's favorite status
+   * Adds to favorites if not already favorited, removes if already favorited
+   */
   function toggleFavorite(shoeId: number) {
     if (favoriteShoes.includes(shoeId)) {
       removeFavorite(shoeId);
@@ -36,6 +55,10 @@ export default function ShoesListTab() {
     }
   }
 
+  /**
+   * Renders a single shoe card in the list
+   * Shows basic info and a button to add/remove from favorites
+   */
   function renderItem({ item }: { item: Shoes }) {
     const isFav = favoriteShoes.includes(item.shoeId);
 
@@ -57,12 +80,14 @@ export default function ShoesListTab() {
 
   return (
     <View style={{ flex: 1 }}>
+      {/* Main list of all shoes */}
       <FlatList
         data={SHOES_ARRAY}
         keyExtractor={item => item.shoeId.toString()}
         renderItem={renderItem}
       />
 
+      {/* Modal that shows detailed information when a shoe is tapped */}
       <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalBg}>
           <View style={styles.modalCard}>
